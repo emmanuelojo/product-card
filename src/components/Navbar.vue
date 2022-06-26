@@ -20,7 +20,7 @@ const props = defineProps({
      <nav class="fixed w-full lg:sticky lg:top-0 h-14 md:h-fit bg-white flex justify-between items-center md:pb-[18px] md:border-b px-2 md:pt-2 lg:px-0">  
         <transition name="slide-right" mode="out-in" appear>
             <div v-if="toggleMenu" class="w-4/5 flex flex-col gap-10 absolute -top-4 -left-4  bg-white  h-screen" style="z-index=8888">
-                <img @click="toggleMenu = false" src="../assets/images/icon-close.svg" alt="close" class="w-4 h-4 ml-5 mt-5 cursor-pointer">
+                <img @click="toggleMenu = false" src="../assets/images/icon-close.svg" alt="close" class="w-4 h-4 ml-10 mt-10 cursor-pointer">
                 <ul class="flex flex-col items-center gap-6">
                     <li v-for="link in navLink" :key="link" class="text-sm"> {{ link }}</li>
                 </ul>
