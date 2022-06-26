@@ -8,13 +8,16 @@ const navLink = [
 const showCart = ref(false)
 
 const toggleMenu = ref(false)
+
+const props = defineProps({
+    productCount: Number
+})
 </script>
 
 
 <template>
    <div class="relative" style="z-index: 888">
-     <nav class="flex justify-between items-center md:pb-8 md:border-b">
-        
+     <nav class="flex justify-between items-center md:pb-8 md:border-b">  
         <transition name="slide-right" mode="out-in" appear>
             <div v-if="toggleMenu" class="w-4/5 flex flex-col gap-10 absolute -top-4 -left-4  bg-white  h-screen" style="z-index=8888">
                 <img @click="toggleMenu = false" src="../assets/images/icon-close.svg" alt="close" class="w-4 h-4 ml-5 mt-5 cursor-pointer">
@@ -26,18 +29,22 @@ const toggleMenu = ref(false)
         
         <div class="flex items-center md:gap-5 lg:gap-14">
             <div class="flex items-center gap-2">
-                <img @click="toggleMenu = true" src="../assets/images/icon-menu.svg" alt="menubar" class="md:hidden">
+                <img @click="toggleMenu = true" src="../assets/images/icon-menu.svg" alt="menubar" class="md:hidden w-6 h-5">
                 <p class="font-semibold text-3xl">sneakers</p>
             </div>
 
             <ul class="hidden md:flex items-center gap-6">
-                <li v-for="link in navLink" :key="link" class="text-sm"> {{ link }}</li>
+                <li v-for="link in navLink" :key="link" class="text-sm cursor-pointer hover:text-orange-500"> {{ link }}</li>
             </ul>
         </div>
 
         <div class="flex items-center gap-4 lg:gap-10 relative">
-            <img src="../assets/images/icon-cart.svg" alt="cart" class="cursor-pointer">
-
+            <div class="relative cursor-pointer">
+                <img src="../assets/images/icon-cart.svg" alt="cart" class="cursor-pointer">
+                <div v-if="productCount" class="absolute -top-3 -right-2 flex justify-center items-center bg-orange-500 text-white w-[18px] h-[18px] px-1 rounded-full">
+                    <p class="text-[9px] text-center pt-[1px]">{{ productCount }}</p>
+                </div>
+            </div>
             <div class="cart-container">
                 <img @click="showCart = true" src="../assets/images/image-avatar.png" alt="avatar" class="h-8 md:h-10 lg:h-14 cursor-pointer rounded-full hover:border-2 hover:border-orange-500">
             
@@ -46,7 +53,29 @@ const toggleMenu = ref(false)
 
                     <hr>
 
-                    <div class=" h-44 flex justify-center items-center">
+                    <div v-if="productCount && productCount > 0" class="px-2 py-5 flex flex-col gap-4">
+                        <div class="flex justify-between items-center">
+                            <div class="flex gap-2">
+                                <img src="../assets/images/image-product-1.jpg" alt="product" class="h-10 rounded-md">
+
+                                <div class="flex flex-col gap-1 text-xs text-gray-500">
+                                    <p class="">Autumn Limited Edition...</p>
+                                    <p class="flex items-center">$125.00 x {{ productCount}} <span class="ml-1 font-bold text-black"> ${{ 125 * productCount}}</span></p>
+                                </div>
+                            </div>
+
+                            <div class="cursor-pointer">
+                                <img src="../assets/images/icon-delete.svg" alt="delete">
+                            </div>
+                        </div>
+
+                        <div class="font-bold text-sm text-white bg-orange-500 cursor-pointer rounded-md px-1 py-2 w-full flex justify-center items-center">
+                            <p>Checkout</p>
+                        </div>
+
+                    </div>
+
+                    <div v-else class=" h-44 flex justify-center items-center">
                         <p class="font-medium text-sm text-center">Your cart is empty</p>
                     </div>
                 </div>
