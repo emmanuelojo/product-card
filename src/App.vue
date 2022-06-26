@@ -99,7 +99,7 @@ const decreaseQuantity = () => {
           </div>
 
           <div class="w-full sm:w-fit bg-orange-500 rounded-md py-[10px] px-9 flex justify-center items-center gap-2 cursor-pointer hover:scale-105">
-            <img  src="./assets/images/icon-cart.svg" alt="cart" class="text-white h-4">
+            <i class="fa fa-shopping-cart text-white"></i>
             <p class="text-sm font-semibold text-white">Add to cart</p>
           </div>
         </div>
