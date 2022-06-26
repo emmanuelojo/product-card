@@ -17,7 +17,7 @@ const props = defineProps({
 
 <template>
    <div class="relative" style="z-index: 888">
-     <nav class="flex justify-between items-center md:pb-8 md:border-b">  
+     <nav class="fixed w-full lg:sticky lg:top-0 h-14 md:h-fit bg-white flex justify-between items-center md:pb-[18px] md:border-b px-2 md:pt-2 lg:px-0">  
         <transition name="slide-right" mode="out-in" appear>
             <div v-if="toggleMenu" class="w-4/5 flex flex-col gap-10 absolute -top-4 -left-4  bg-white  h-screen" style="z-index=8888">
                 <img @click="toggleMenu = false" src="../assets/images/icon-close.svg" alt="close" class="w-4 h-4 ml-5 mt-5 cursor-pointer">
@@ -39,16 +39,13 @@ const props = defineProps({
         </div>
 
         <div class="flex items-center gap-4 lg:gap-10 relative">
-            <div class="relative cursor-pointer">
+            <div class="cart-container relative cursor-pointer">
                 <img src="../assets/images/icon-cart.svg" alt="cart" class="cursor-pointer">
                 <div v-if="productCount" class="absolute -top-3 -right-2 flex justify-center items-center bg-orange-500 text-white w-[18px] h-[18px] px-1 rounded-full">
                     <p class="text-[9px] text-center pt-[1px]">{{ productCount }}</p>
                 </div>
-            </div>
-            <div class="cart-container">
-                <img @click="showCart = true" src="../assets/images/image-avatar.png" alt="avatar" class="h-8 md:h-10 lg:h-14 cursor-pointer rounded-full hover:border-2 hover:border-orange-500">
-            
-                <div class="cart w-60 bg-white shadow rounded-md absolute top-10 md:top-[60px] right-0" style="z-index: 888">
+                
+                <div class="cart w-60 bg-white shadow rounded-md absolute top-10 md:top-[20px] right-0" style="z-index: 888">
                     <p class="font-semibold text-sm p-2">Cart</p>
 
                     <hr>
@@ -80,7 +77,11 @@ const props = defineProps({
                     </div>
                 </div>
             </div>
-        </div>        
+
+            <div>
+                <img @click="showCart = true" src="../assets/images/image-avatar.png" alt="avatar" class="h-8 md:h-10 lg:h-14 cursor-pointer rounded-full hover:border-2 hover:border-orange-500">
+            </div>
+        </div> 
     </nav>
    </div>
 </template>
@@ -100,7 +101,7 @@ const props = defineProps({
     transition: 0.5s ease-in-out;
 }
 
-.cart-container:hover .cart{
+.cart-container:hover > .cart{
     display: block;
 }
 

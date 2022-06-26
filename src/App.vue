@@ -46,10 +46,10 @@ const decreaseQuantity = () => {
 </script>
 
 <template>
-  <div class="pt-4 md:pt-20 grid gap-5 w-[90%] lg:w-4/5 mx-auto relative">    
+  <div class="lg:pt-20 grid gap-5 w-full lg:w-4/5 mx-auto relative">    
     <Navbar  :product-count="count"/>
 
-    <div class="md:mt-16 flex flex-col sm:flex-row justify-center items-center sm:gap-8 md:gap-10 lg:gap-20">
+    <div class="px-4 lg:px-0 mt-16 md:mt-28 lg:mt-16 flex flex-col sm:flex-row justify-center items-center sm:gap-8 md:gap-10 lg:gap-20">
       <div class="order-1">
         <div class="relative">
           <div @click="prevImage" class="prev cursor-pointer bg-white absolute -mt-[10px] top-1/2 left-2 w-10 h-10 flex justify-center items-center md:hidden rounded-full ">
