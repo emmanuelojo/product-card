@@ -38,10 +38,10 @@ const toggleMenu = ref(false)
         <div class="flex items-center gap-4 lg:gap-10 relative">
             <img src="../assets/images/icon-cart.svg" alt="cart" class="cursor-pointer">
 
-            <div @mouseover="showCart = true" @mouseout="showCart = false">
-                <img src="../assets/images/image-avatar.png" alt="avatar" class="h-8 md:h-10 lg:h-14 cursor-pointer rounded-full hover:border-2 hover:border-orange-500">
+            <div class="cart-container">
+                <img @click="showCart = true" src="../assets/images/image-avatar.png" alt="avatar" class="h-8 md:h-10 lg:h-14 cursor-pointer rounded-full hover:border-2 hover:border-orange-500">
             
-                <div v-if="showCart" class="w-60 bg-white shadow rounded-md absolute top-10 md:top-20 right-0" style="z-index: 888">
+                <div class="cart w-60 bg-white shadow rounded-md absolute top-10 md:top-[60px] right-0" style="z-index: 888">
                     <p class="font-semibold text-sm p-2">Cart</p>
 
                     <hr>
@@ -69,5 +69,13 @@ const toggleMenu = ref(false)
 
 .slide-right-enter-active, .slide-right-leave-active{
     transition: 0.5s ease-in-out;
+}
+
+.cart-container:hover .cart{
+    display: block;
+}
+
+.cart{
+    display: none;
 }
 </style>

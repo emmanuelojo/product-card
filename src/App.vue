@@ -72,7 +72,7 @@ const nextImage = () => {
            withstand everything the weather can offer.           
         </p>
 
-        <div class="flex flex-row md:flex-col justify-between items-center s md:gap-2">
+        <div class="flex flex-row md:grid justify-between md:justify-start items-center s md:gap-2">
           <div class="flex items-center gap-3">
             <p class="text-xl font-bold">${{amount}}.00</p>
             <div class="bg-[hsl(25,100%,94%)]  p-1 rounded-md">            
