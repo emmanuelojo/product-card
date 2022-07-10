@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-const navLink = [
+const navLink = ref([
   { link: "Collections", isHovered: false },
   { link: "Men", isHovered: false },
   { link: "Women", isHovered: false },
   { link: "About", isHovered: false },
   { link: "Contact", isHovered: false },
-];
+])
 
 const showCart = ref(false);
 
@@ -64,10 +64,9 @@ const props = defineProps({
           >
             <span> {{ link.link }} </span>
             <div
-              class="slider absolute -bottom-7 w-full h-1 bg-orange-500"
+              class="slider absolute -bottom-9 w-full h-1 bg-orange-500"
+              :class="link.isHovered ? 'visible' : 'invisible'"
             ></div>
-            <!-- 
-              :class="link.isHovered ? 'visible' : 'invisible'" -->
           </li>
         </ul>
       </div>
